@@ -6,6 +6,10 @@ coverage/
 .env
 .env.*
 !.env.example
+.dev.vars
+.dev.vars.*
+.open-next/
+.wrangler/
 data/
 npm-debug.log*
 yarn-debug.log*

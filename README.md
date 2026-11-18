@@ -4,7 +4,7 @@ Este modo temporário substitui o Supabase por um arquivo JSON local. A galeria 
 
 ## Requisitos e inicialização
 
-1. Instale Node.js 20.9+ e execute `npm install`.
+1. Instale Node.js 22.12+ e execute `npm ci`.
 2. Crie sua configuração local:
 
    ```powershell
@@ -33,7 +33,7 @@ O runtime local não depende de Supabase. Para investigar a conexão da configur
 
 Na última execução registrada, as variáveis tinham formato aparente válido; REST e leitura de `images` expiraram (código `23`, operação abortada por timeout), Auth falhou com `ENOTFOUND` ao resolver o host Supabase e `tags`/bucket responderam HTTP 200. Isso aponta conectividade/DNS irregular, não prova que todas as credenciais estão corretas. Se voltar ao Supabase, confirme o host no painel do projeto, estado ativo, DNS do Windows e teste sem VPN/Radmin/Hamachi; verifique também firewall e antivírus.
 
-As migrações antigas em `supabase/migrations/` são mantidas para a futura volta ao Supabase, mas não são necessárias para este modo local. No SQL Editor não execute `ALTER TABLE storage.objects`: o RLS de `storage.objects` já vem ativo.
+O modo local usa `data/gallery.json` e não depende de migrações SQL do Supabase.
 
 ## Armazenamento e limites de segurança
 
@@ -48,7 +48,22 @@ As migrações antigas em `supabase/migrations/` são mantidas para a futura vol
 ## Validação
 
 ```powershell
+npm ci
 npm run typecheck
 npm run lint
 npm run build
 ```
+
+## Build e deployment na Cloudflare
+
+`npm run build` executa `next build` e, em seguida, gera o Worker OpenNext. A configuração versionada em `wrangler.jsonc` aponta para `.open-next/worker.js` e `.open-next/assets`, com o binding `ASSETS` e a flag `nodejs_compat`.
+
+```powershell
+npm run build
+npm run preview
+npm run deploy
+```
+
+Para Cloudflare Workers Builds, use `npm run build` como build command e `npx wrangler deploy` como deploy command. Não execute `wrangler deploy` sem que o build OpenNext tenha terminado com sucesso. `npm run deploy` faz o build e chama o deploy do adaptador.
+
+A configuração atual não declara bindings R2. Não adicione ou substitua buckets existentes sem confirmar seus nomes, IDs e uso no painel Cloudflare.
