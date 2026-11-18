@@ -2,14 +2,18 @@
   "name": "galeria-lume",
   "version": "1.0.0",
   "private": true,
+  
+},
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint .",
-    "check:supabase": "node scripts/check-supabase.mjs",
-    "typecheck": "tsc --noEmit"
-  },
+    "lint": "eslint",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+  }
+},
+
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.57.4",
