@@ -11,8 +11,7 @@
     "lint": "eslint",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
-  }
-},
+  },
 
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
