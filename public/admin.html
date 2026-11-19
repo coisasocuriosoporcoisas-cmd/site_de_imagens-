@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Gerenciamento — lum.</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/admin.js"></script>
+</head>
+<body>
+  <main class="management-shell">
+    <header class="management-header">
+      <div>
+        <a class="brand" href="/">lum<span class="brand-mark">.</span></a>
+        <p class="status-message">Área de gerenciamento</p>
+      </div>
+      <div class="top-actions">
+        <button class="quiet-button" data-theme-toggle type="button">Alternar tema</button>
+        <button id="logout-button" class="quiet-button" type="button">Sair</button>
+      </div>
+    </header>
+    <p id="admin-status" class="status-message" role="status"></p>
+    <section class="panel">
+      <div class="management-header"><h1>Adicionar imagens</h1></div>
+      <p class="status-message">Selecione imagens ou cole URLs HTTPS, uma por linha. Até 50 itens por importação.</p>
+      <form id="upload-form" class="form-grid">
+        <fieldset class="drop-zone">
+          <label>Arquivos (JPEG, PNG, WebP ou GIF; até 10 MB cada)
+            <input accept="image/jpeg,image/png,image/webp,image/gif" multiple name="files" type="file">
+          </label>
+        </fieldset>
+        <label>Links de imagens (HTTPS, um por linha)<textarea name="imageUrls" placeholder="https://example.com/image.jpg"></textarea></label>
+        <label>Título (opcional; vazio usa o nome do arquivo/link)<input name="title" maxlength="160"></label>
+        <label>Descrição (opcional)<textarea name="description" maxlength="5000"></textarea></label>
+        <label>Tags (separadas por vírgula)
+          <input name="tags" list="existing-tags" placeholder="paisagem, #meme">
+          <datalist id="existing-tags"></datalist>
+        </label>
+        <button class="primary-button" type="submit">Importar imagens</button>
+      </form>
+    </section>
+    <section class="panel admin-panel">
+      <h2 id="image-count">Imagens cadastradas</h2>
+      <div id="management-list" class="management-list"></div>
+      <nav id="admin-pagination" class="pagination"></nav>
+    </section>
+    <section class="panel admin-panel">
+      <h2>Gerenciar tags</h2>
+      <form id="tag-form" class="form-grid">
+        <label>Ação<select name="operation">
+          <option value="rename">Renomear</option>
+          <option value="merge">Mesclar</option>
+          <option value="delete">Excluir tag sem uso</option>
+        </select></label>
+        <label>Tag de origem<select name="sourceId" required></select></label>
+        <label>Tag de destino<select name="targetId"><option value="">Não aplicável</option></select></label>
+        <label>Novo nome (renomear)<input name="newName" maxlength="50"></label>
+        <button class="quiet-button" type="submit">Aplicar</button>
+      </form>
+    </section>
+    <section class="panel admin-panel">
+      <h2>Autenticação em duas etapas</h2>
+      <div id="totp-management"></div>
+    </section>
+  </main>
+</body>
+</html>

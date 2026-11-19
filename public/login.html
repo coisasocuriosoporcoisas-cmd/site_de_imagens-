@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Entrar — lum.</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/login.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar"><a class="brand" href="/">lum<span class="brand-mark">.</span></a></header>
+    <section class="panel secret-entry">
+      <span class="eyebrow">Área restrita</span>
+      <h1>Entrar</h1>
+      <form id="login-form" class="form-grid">
+        <label>Usuário<input autocomplete="username" name="username" required maxlength="64"></label>
+        <label>Senha<input autocomplete="current-password" name="password" type="password" required maxlength="128"></label>
+        <label id="totp-field" hidden>Código do aplicativo autenticador
+          <input autocomplete="one-time-code" inputmode="numeric" name="totp" pattern="[0-9]{6}" maxlength="6">
+        </label>
+        <p id="login-status" class="status-message" role="alert"></p>
+        <button class="primary-button" type="submit">Entrar</button>
+      </form>
+      <small class="status-message">Acesso restrito ao proprietário.</small>
+    </section>
+  </main>
+</body>
+</html>

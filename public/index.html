@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f3">
+  <meta name="description" content="Uma galeria independente para encontrar sua próxima inspiração.">
+  <title>lum. — Inspiração visual para todos os dias</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/">lum<span class="brand-mark">.</span></a>
+      <search class="search-box">
+        <form id="search-form">
+          <input id="search-input" aria-label="Buscar imagens" name="q" placeholder="Busque imagens, ideias e inspirações" maxlength="100">
+          <button class="search-submit" type="submit" aria-label="Buscar">⌕</button>
+        </form>
+      </search>
+      <div class="top-actions">
+        <button class="quiet-button" data-theme-toggle type="button" aria-label="Alternar tema">Alternar tema</button>
+      </div>
+    </header>
+    <section class="hero">
+      <span class="eyebrow">Coleção aberta</span>
+      <h1>Ideias que merecem ser vistas.</h1>
+      <p>Uma galeria independente para encontrar sua próxima inspiração.</p>
+    </section>
+    <nav id="tag-row" class="tag-row" aria-label="Filtrar por tag"></nav>
+    <section id="gallery" class="masonry" aria-label="Galeria de imagens" aria-live="polite"></section>
+    <nav id="pagination" class="pagination" aria-label="Paginação"></nav>
+    <footer class="pagination"><small>lum. — uma galeria para inspirar</small></footer>
+  </main>
+</body>
+</html>
